@@ -1,0 +1,17 @@
+article{
+    margin-top: 100px;
+
+}
+#user-list td,th{
+    text-align: center;
+    vertical-align: middle;
+}
+#find-and-add{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+

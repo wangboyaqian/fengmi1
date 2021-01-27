@@ -1,0 +1,78 @@
+body{
+    position: relative;
+    width: 1536px;
+}
+
+/*上部分的颜色*/
+#top{
+    width: 100%;
+    height: 50%;
+    background-color: #1b6d85;
+}
+
+#head-title{
+    width: 100%;
+    padding-top: 4%;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+
+
+/*下部分的颜色*/
+#bottom{
+    width: 100%;
+    height: 50%;
+    background-color: rgb(235,235,235);
+    padding-top: 22%;
+}
+#footer-title{
+    width: 100%;
+    text-align: center;
+}
+#form{
+    width: 400px;
+    height: 260px;
+    position: absolute;
+    left: 568px;
+    top: 35%;
+    background-color: white;
+    padding-top: 3%;
+    border-radius: 5%;
+}
+table td{
+    text-align: center;
+}
+table{
+    width: 80%;
+    height: 90%;
+    margin: 0 auto;
+}
+.input{
+    width: 100%;
+    height: 40px;
+    text-align: center;
+}
+#button{
+    width: 100%;
+    height: 40px;
+}
+/*老鹰的定位*/
+/*头部定位*/
+#eagle-head{
+    position: absolute;
+    top: 23.4%;
+    left: 47%;
+}
+/*左手定位*/
+#eagle-left-hand{
+    position: absolute;
+    top: 34.945%;
+    left: 43%;
+}
+/*右手定位*/
+#eagle-right-hand{
+    position: absolute;
+    top: 34.945%;
+    left: 55%;
+}

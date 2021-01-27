@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户注册</title>
+		<link rel="stylesheet" type="text/css" href="./css/login.css">
+<!--		<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">-->
+		<script src="./bootstrap/js/jquery-3.5.1.min.js"></script>
+		<script src="./bootstrap/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<form id="form"  method="get" action="/fengmi/userController">
+			<input type="hidden" name="method" value="register">
+			<div style="text-align:center">
+		   <img src="./image/logo.png"/>
+		</div>
+		<div class="regist">
+			<div class="regist_center">
+				<div class="regist_top">
+					<div class="left fl">会员注册</div>
+					<div class="right fr"><a href="./index.html" target="_self">锋迷网</a></div>
+					<div class="clear"></div>
+					<div class="xian center"></div>
+				</div>
+				<div class="regist_main center">
+					<div class="username">用&nbsp;&nbsp;户&nbsp;&nbsp;名:&nbsp;&nbsp;<input class="shurukuang" type="text" id="userName" name="username" placeholder="请输入你的用户名[至少6位]"/><span id="message" style="font-size:18px"></span></div>
+					<div class="username">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;<input class="shurukuang" type="password" id="mm1" name="password" placeholder="请输入你的密码[6-8位]"/></div>
+					<div class="username">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:&nbsp;&nbsp;<input class="shurukuang" type="text"  name="sex" placeholder="请输入你的性别"/></div>
+
+					<div class="username">确认密码:&nbsp;&nbsp;<input class="shurukuang" type="password" name="repassword" placeholder="请确认你的密码" id="mm2"/><span id="msg" style="font-size:18px"></span></div>
+					<div class="username">手&nbsp;&nbsp;机&nbsp;&nbsp;号:&nbsp;&nbsp;<input class="shurukuang" type="text" name="phone" placeholder="请填写正确的手机号"/></div>
+					<div class="username">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:&nbsp;&nbsp;<input class="shurukuang" id="mail" type="text" name="mail" placeholder="请填写邮箱地址"/><span id="result" style="font-size:18px"></span></div>
+
+					<!-- <div class="username">
+						<div class="left fl">验&nbsp;&nbsp;证&nbsp;&nbsp;码:&nbsp;&nbsp;<input class="yanzhengma" type="text" name="username" placeholder="请输入验证码"/></div>
+						<div class="right fl"><img src="./image/yanzhengma.jpg"></div>
+						<div class="clear"></div>
+					</div> -->
+				</div>
+				<div class="regist_submit">
+					<input class="submit" type="submit"   name="submit" value="立即注册" >
+				</div>
+				
+			</div>
+		</div>
+		</form>
+		<script type="text/javascript">
+		    function validateMail(){
+		         var mail= $("#mail").val();
+		         var regex= /^\w+@\w+.\w+$/;
+		         if(mail.match(regex)){
+		            $("#result").text("此邮箱格式正确");
+		            return true;
+		         }else{
+		            $("#result").text("此邮箱格式错误");
+		            return false;
+		         }
+		    }
+		
+		    function validateMm(){
+		       var v1= $("#mm1").val();
+		       var v2= $("#mm2").val();
+		        
+		        if(v1!='' && v1==v2){
+		            
+		            return true;
+		        }else{
+		           $("#msg").text("两次密码不一致，请检查");
+		           $("#msg").css("color","red");
+		           return false;
+		        }
+		    }
+		    
+		    var result = true;
+		    function validateName(){
+		         var name = $("#userName").val();
+		          if(name!=''){
+		             $.get("../user/validateName?name="+name,function(data){
+				        // alert(data);
+				         if(data=="0"){
+				            $("#message").text("该用户名可以用");
+				            $("#message").css("color","green");
+				            result = true;
+				         }else{
+				            $("#message").text("该用户名已经被占用");
+				            $("#message").css("color","red");
+				            result = false;
+				         }
+				     });
+		          }else{
+		             result = false;
+		             $("#message").text("该用户名不能为空");
+				     $("#message").css("color","red");
+		          }
+				     
+		    }
+		
+			$(function(){
+				
+				$("#userName").blur(function(){
+				      validateName();
+				});
+				
+			});
+			
+			function validateForm(){
+				    //alert("1");
+				    //alert($("#form"));
+				    $("#form").submit(function(){
+				        //alert("2");
+				        if(validateMm() && result && validateMail()){
+					      //此表单都正确，可以提交给服务器
+					      //alert("3");
+					       return true;
+					    }else{
+					       //alert("4");
+					       return false;
+					    }
+				    
+				    });
+				
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+article{
+    margin-top: 100px;
+
+}
+#user-list td,th{
+    text-align: center;
+    vertical-align: center;
+}
+#find-and-add{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+.add-button{
+    height: 40px;
+}
+#update-button{
+    height: 30px;
+    font-size: 18px;
+    line-height: 10px;
+}
